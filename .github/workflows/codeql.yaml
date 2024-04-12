@@ -29,16 +29,13 @@ jobs:
         
           - name: python
             title: Python & pip
-            run: sudo apt-get install -y python3-pip
-            uses:
+            run_use: "run: sudo apt-get install -y python3-pip"
           - name: go
             title: Go
-            run:
-            uses: actions/setup-go@v5"
+            run_use: "uses: actions/setup-go@v5"
     steps:
       - name: Install ${{ matrix.title }}
-        run: ${{ matrix.run }}
-        uses: ${{ matrix.uses }}
+        ${{ matrix.run_use }}
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Initialize CodeQL
